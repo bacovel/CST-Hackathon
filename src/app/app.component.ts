@@ -25,7 +25,6 @@ export class AppComponent implements OnInit{
     ) {}
  
   ngOnInit(): void {
-    console.log("Aici2")
     this.loadSubscription();
   }
 
@@ -41,5 +40,4 @@ export class AppComponent implements OnInit{
       }
     })
   }
-
 }

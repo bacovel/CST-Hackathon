@@ -10,7 +10,7 @@ export class AccountService {
 
   constructor(private apiService: ApiService) { }
 
-  getCurrentUser(): Observable<any> {
-    return this.apiService.get(`${this.url}/Auth`);
+  getCurrentUser(body:any): Observable<any> {
+    return this.apiService.post(`${this.url}/Auth`,body);
   }
 }

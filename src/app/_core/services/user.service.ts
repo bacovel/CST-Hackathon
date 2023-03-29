@@ -19,12 +19,11 @@ export class UserService {
     private accountService: AccountService,
     private router: Router
   ) {
-    console.log("Aici")
-    this.getCurrentUser().pipe(first()).subscribe();
+    //this.getCurrentUser().pipe(first()).subscribe();
    }
 
-  getCurrentUser(): Observable<any> {
-    return this.accountService.getCurrentUser().pipe(
+  getCurrentUser(body:any): Observable<any> {
+    return this.accountService.getCurrentUser(body).pipe(
       tap((response: UserInfo) => {
         this.setCurrentUser(response);
         StorageHelper.saveToken(response.token);

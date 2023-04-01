@@ -29,15 +29,16 @@ export class AppComponent implements OnInit{
   }
 
   loadSubscription(){
-    this.userSubscription = this.userService.currentUser$.subscribe({
-      next:(user:UserInfo) => {
-          if(user?.token){
-            this.router.navigate([Urls.BASE])
-          }else{
-            this.errorService.throwError(UNAUTHORIZED)
-          }
-          this.userSubscription?.unsubscribe();
-      }
-    })
+    // this.userSubscription = this.userService.currentUser$.subscribe({
+    //   next:(user:UserInfo) => {
+    //       if(user?.token){
+    //         this.router.navigate([Urls.BASE])
+    //       }else{
+    //         // this.errorService.throwError(UNAUTHORIZED)
+    //         this.router.navigate([Urls.AUTH, Urls.REGISTER])
+    //       }
+    //       this.userSubscription?.unsubscribe();
+    //   }
+    // })
   }
 }

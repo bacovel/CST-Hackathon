@@ -8,6 +8,7 @@ import StorageHelper from '../helpers/StorageHelper';
 import { UserInfo } from '../models/UserInfo';
 import { StorageHelperService } from './storage-helper.service';
 import { LoginModel } from '../models/LoginModel';
+import { userModel } from '../models/UserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,13 @@ export class UserService {
   private currentUserSource = new BehaviorSubject<UserInfo| any>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
+
   constructor(
     private accountService: AccountService,
     private router: Router,
     private storageHelper: StorageHelperService
   ) {
-    //this.getCurrentUser().pipe(first()).subscribe();
+    
    }
 
   loginUser(body:LoginModel): Observable<any> {
@@ -53,5 +55,6 @@ export class UserService {
     this._currentUser = currentUser;
     this.currentUserSource.next(currentUser);
   }
+
   
 }

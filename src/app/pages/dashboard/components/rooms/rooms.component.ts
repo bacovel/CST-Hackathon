@@ -1,5 +1,12 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AccountService } from 'src/app/_core/api/account.service';
+import { CompileService } from 'src/app/_core/api/compile.service';
+import { RoomService } from 'src/app/_core/api/room.service';
+import { Urls } from 'src/app/_core/constants/Urls';
+import ComputePayloadHelper from 'src/app/_core/helpers/ComputePayloadHelper';
 import { MessageModel } from 'src/app/_core/models/MessageModel';
 import { SignalrService } from 'src/app/_core/services/signalr.service';
 
@@ -11,22 +18,20 @@ import { SignalrService } from 'src/app/_core/services/signalr.service';
 export class RoomsComponent implements OnInit{
   private routeSubscribe: any;
   id:string = '';
-  editorOptions = {theme: 'vs-dark', language: 'javascript'};
-  code: string= 'function x() {\nconsole.log("Hello world!");\n}';
-  users: MessageModel[] = [
-    {
-      author: "mandarin",
-      message: "sugi pula ca te fac"
-    },
-    {
-      author: "raul",
-      message: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-    }
-  ]
+  editorOptions = {theme: 'vs-dark', language: 'java'};
+  code: string= 'public class MyClass {\r\n    public static void main(String args[]) {\r\n      int x=10;\r\n      int y=25;\r\n      int z=x+y;\r\n\r\n      System.out.println(\"Sum of x+y = \" + z);\r\n    }\r\n}';
+  inputMessage: string = '';
+  output: string = '';
+  messages: MessageModel[] = []
   
   constructor(
     private signalR : SignalrService,
     private activeRoute: ActivatedRoute,
+    private compileService: CompileService,
+    private roomService: RoomService,
+    private toastr: ToastrService,
+    private router: Router,
+    private accountService: AccountService
     ){}
 
   ngOnInit(): void {
@@ -36,17 +41,52 @@ export class RoomsComponent implements OnInit{
    });
     this.signalR.startConnection("https://localhost:44314/hub/RoomHub");
     this.signalR.getMessage().subscribe({
-      next:(response:any) =>{
-        console.log(response)
+      next:(response:MessageModel) =>{
+        this.messages.push(response)
       },
       error:(error:any)=>{
         console.log(error)
       }
-    }) 
+    })
+    setTimeout(() => {
+      this.signalR.JoinGroup(this.id);
+    },1000)
   }
 
   sendMessage(){
-    console.log("id")
-    this.signalR.sendMessage(this.id);
+    this.signalR.SendMessage(this.id,this.inputMessage);
+    this.inputMessage = ''
+  }
+
+  compile(){
+    var payload = ComputePayloadHelper.executePayload(this.code,"java","3")
+    this.compileService.Execute(payload).subscribe({
+      next:(response:any) =>{
+        this.output = response.output; 
+      },
+      error:(err:any)=>{
+        this.output = err;
+      }
+    })
+  }
+
+  finishRoom(){
+    this.roomService.closeRoom(this.id).subscribe({
+      next:() =>{
+         let paylaod = ComputePayloadHelper.updateExpPayload(100);
+          this.accountService.updateExp(paylaod).subscribe({
+            next:()=>{
+              this.toastr.success(`You have received 100 points!`)
+            },
+            error:()=>{
+              this.toastr.error("you could not get points")
+            }
+          })
+          this.router.navigate([Urls.DASH,Urls.PROFILE]);
+      },
+      error: (err:HttpErrorResponse) => {
+          this.toastr.error(err.error);
+      }
+    })
   }
 }

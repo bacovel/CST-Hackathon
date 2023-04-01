@@ -21,18 +21,22 @@ export class SignalrService {
       .withHubProtocol(new msgPack.MessagePackHubProtocol())
       .build();
 
-    this.hubConnection.on('receive', (data: string) => {
+    this.hubConnection.on('receiveMessage', (data: any) => {
       this.messageReceived.next(data);
     });
 
     return this.hubConnection.start();
   }
 
-  public sendMessage(message: string): void {
-    this.hubConnection!.invoke('send', message).catch(error => console.error(error));
+  public JoinGroup(message: string): void {
+    this.hubConnection!.invoke('JoinGroup', message).catch(error => console.error(error));
   }
 
-  public getMessage(): Observable<string> {
+  public SendMessage(room:string,message: string): void {
+    this.hubConnection!.invoke('SendMessage', room,message).catch(error => console.error(error));
+  }
+
+  public getMessage(): Observable<any> {
     return this.messageReceived.asObservable();
   }
 }

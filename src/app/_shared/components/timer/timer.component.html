@@ -1,0 +1,33 @@
+<div class="flex flex-col justify-center text-center">
+  <div class="circular-timer" [style.width]="size" [style.height]="size">
+    <div class="circular-timer-inner">
+      <div class="circular-timer-test">{{ test }}</div>
+      <div class="circular-timer-text">{{ time }}</div>
+    </div>
+    <svg
+      class="circular-timer-svg"
+      [attr.viewBox]="'0 0 ' + viewBox + ' ' + viewBox"
+    >
+      <circle
+        class="circular-timer-background"
+        [attr.cx]="radius"
+        [attr.cy]="radius"
+        [attr.r]="radius - strokeWidth"
+      />
+      <circle
+        class="circular-timer-progress"
+        [attr.cx]="radius"
+        [attr.cy]="radius"
+        [attr.r]="radius - strokeWidth"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="dashOffset"
+        [style.stroke]="progressColor"
+        [style.stroke-width]="strokeWidth"
+      />
+    </svg>
+  </div>
+  <div *ngIf="!started" class="flex justify-center gap-5">
+    <p-dropdown [(ngModel)]="selectedHours" [options]="timers" optionLabel="name"></p-dropdown>
+    <button (click)="start()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start</button>
+  </div>
+</div>

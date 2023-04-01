@@ -24,6 +24,10 @@ export class ApiService {
     return this.http.put(`${this.apiUrl}${path}`, body, { params });
   }
 
+  patch(path: string, body = {}, params = {}) {
+    return this.http.patch(`${this.apiUrl}${path}`, body, { params });
+  }
+
   post(path: string, body = {}, params = {}, headers = {}) {
     return this.http.post(`${this.apiUrl}${path}`, body, { params, headers });
   }

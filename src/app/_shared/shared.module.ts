@@ -10,6 +10,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MessageComponent } from './components/message/message.component';
 
+import { TimerComponent } from './components/timer/timer.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,14 +20,17 @@ import { MessageComponent } from './components/message/message.component';
     LeaderboardComponent,
     NavBarComponent,
     LeaderboardComponent,
-    MessageComponent
+    MessageComponent,
+    TimerComponent
   ],
   imports: [
     CommonModule,
     CardModule,
     TableModule,
     TreeTableModule,
-    TabMenuModule
+    TabMenuModule,
+    DropdownModule,
+    FormsModule
   ],
   exports:[
     ProjectCardComponent,
@@ -32,7 +38,8 @@ import { MessageComponent } from './components/message/message.component';
     NavBarComponent,
     MessageComponent,
     TabMenuModule,
-    TableModule
+    TableModule,
+    TimerComponent
   ],
  
 })

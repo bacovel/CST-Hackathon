@@ -10,7 +10,7 @@
 }
 
 .content{
-    max-height: 90vh;
+    height: calc(100vh - 57px);
     display: flex;
     flex-direction: row;
 }
@@ -45,12 +45,23 @@
     width: 20vw;
     position: relative;
     border-left: 1px solid whitesmoke;
-    
-    .btn{
-        position: absolute;
-        bottom: 1em;
-        right: 1em;
+    max-height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
     }
+}
+
+
+  
+.btn{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    z-index: 1;
 }
 
 .project__field{

@@ -11,12 +11,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectComponent } from './components/project/project.component';
 
 
 @NgModule({
   declarations: [
     
-    UserProfileComponent
+    UserProfileComponent,
+          ProjectComponent
   ],
   imports: [
     CommonModule,

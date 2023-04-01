@@ -11,4 +11,5 @@ export enum Urls {
 
   DASH = 'dashboard',
   PROFILE = 'user-profile',
+  PROJECT = "project/:id"
 }

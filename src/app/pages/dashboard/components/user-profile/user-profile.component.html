@@ -1,7 +1,4 @@
-<div class="card ">
-    <p-tabMenu class="bg-gray-900 text-white" [model]="items"></p-tabMenu>
-</div>
-
+<app-nav-bar></app-nav-bar>
 <div class="content">
     <div class="profile">
         <div class="profile__card">
@@ -14,25 +11,22 @@
             </div>
         </div>
     </div>
+    <button (click)="showDialog()" icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
     <div class="projects">
         <div class="project__field">
             <h1>Your projects</h1>
-            <div *ngFor="let project of projects">
+            <div *ngFor="let project of projects" class="flex justify-center">
                 <app-project-card  [project]="project"></app-project-card>   
             </div>
 
-            <button (click)="showDialog()" icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
             <p-dialog header="Create a new adventure!" class="flex flex-direction-column" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-                
-                    <form class="flex flex-col" action="" [formGroup]="formGroup!">
-                        <input formControlName="name" placeholder="Project name" type="text" pInputText/>
-                        <textarea formControlName="description" placeholder="What is this project about" rows="5" cols="30" pInputTextarea></textarea>
-                        <button  type="submit" class="text-white bg-blue-950 mt-9" pButton>Create</button>
-                    </form>
-                
+                <form class="flex flex-col" [formGroup]="formGroup!" >
+                    <input formControlName="name" placeholder="Project name" type="text" pInputText/>
+                    <textarea formControlName="description" placeholder="What is this project about" rows="5" cols="30" pInputTextarea></textarea>
+                    <button (click)="createProject()" [disabled]="!formGroup?.valid" [ngClass]="{'disabled':!formGroup?.valid,'hover:bg-blue-600':formGroup?.valid}"  type="submit" class="text-white bg-blue-950 mt-9" pButton>Create</button>
+                </form>
             </p-dialog>
         </div>
-
     </div>
 </div>
 

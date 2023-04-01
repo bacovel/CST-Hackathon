@@ -4,6 +4,13 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SharedModule } from 'src/app/_shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -12,8 +19,13 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
-  ],
-  providers:[]
+    DashboardRoutingModule,
+    TabMenuModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    InputTextareaModule,
+    SharedModule
+  ]
 })
 export class DashboardModule { }

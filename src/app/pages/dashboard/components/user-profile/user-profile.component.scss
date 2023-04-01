@@ -1,0 +1,67 @@
+::ng-deep .p-tabmenu .p-tabmenu-nav {
+    background: #111827 !important;
+    border:none;
+    border-bottom: 1px solid whitesmoke;
+    border-width: 0 0 2px 0;
+}
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    background: #111827 !important;
+    color: whitesmoke;
+}
+
+.content{
+    max-height: 90vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile{
+    width: 80vw;
+    padding: 5em;
+}
+
+.profile__card{
+    border: 1px solid whitesmoke ;
+    
+    padding: 2em;
+    border-radius: 0.5em;
+    max-width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+
+    img{
+        height: 18em;
+        max-width: 18em;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+
+.projects{
+    width: 20vw;
+    position: relative;
+    border-left: 1px solid whitesmoke;
+    
+    .btn{
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+    }
+}
+
+.project__field{
+
+    h1{
+        margin: 2em;
+        text-align: center;
+    }
+}
+
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    border-bottom: 2px solid whitesmoke;
+}
+

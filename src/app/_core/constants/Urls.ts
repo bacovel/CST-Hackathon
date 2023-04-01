@@ -3,5 +3,11 @@ export enum Urls {
 
   ACCESS_DENIED = 'access-denied',
   NOT_FOUND = 'not-found',
-  ERROR = 'error'
+  ERROR = 'error',
+
+  AUTH = 'auth',
+  LOGIN = 'login',
+  REGISTER =  'register',
+
+  
 }

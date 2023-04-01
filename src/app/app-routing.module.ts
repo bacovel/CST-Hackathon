@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: Urls.ERROR,
     loadChildren: () => import("./pages/error-pages/error-pages.module").then(m => m.ErrorPagesModule)    
+  },
+  { 
+    path: Urls.AUTH,
+    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) 
   }
 ];
 

@@ -15,6 +15,7 @@ import { HttpRequestsInterceptor } from './_core/interceptors/http-requests.inte
   declarations: [
     AppComponent,
     ErrorPagesComponent,
+    
   ],
   imports: [
     BrowserModule,

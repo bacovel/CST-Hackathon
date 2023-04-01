@@ -20,13 +20,16 @@
             <div *ngFor="let project of projects">
                 <app-project-card  [project]="project"></app-project-card>   
             </div>
+
             <button (click)="showDialog()" icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
             <p-dialog header="Create a new adventure!" class="flex flex-direction-column" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-                <div class="flex flex-col">
-                    <input placeholder="Project name" type="text" pInputText/>
-                    <textarea placeholder="What is this project about" rows="5" cols="30" pInputTextarea></textarea>
-                    <button type="submit" class="text-white bg-blue-950 mt-9" pButton>Create</button>
-                </div>
+                
+                    <form class="flex flex-col" action="" [formGroup]="formGroup!">
+                        <input formControlName="name" placeholder="Project name" type="text" pInputText/>
+                        <textarea formControlName="description" placeholder="What is this project about" rows="5" cols="30" pInputTextarea></textarea>
+                        <button  type="submit" class="text-white bg-blue-950 mt-9" pButton>Create</button>
+                    </form>
+                
             </p-dialog>
         </div>
 

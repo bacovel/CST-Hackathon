@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ProjectService } from 'src/app/_core/api/project.service';
@@ -18,7 +19,7 @@ export class UserProfileComponent implements OnInit{
   userName: String|undefined = "";
   visible: boolean | undefined;
   projects : ProjectModel[] = [];
-
+  formGroup?: FormGroup;
   constructor(
     private router: Router,
     private userService: UserService,
@@ -54,5 +55,10 @@ export class UserProfileComponent implements OnInit{
 
       }
     })
+
+    this.formGroup = new FormGroup({
+      name: new FormControl("", [Validators.required]),
+      description: new FormControl("", [Validators.required])
+    });
 }
 }

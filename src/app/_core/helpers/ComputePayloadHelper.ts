@@ -1,4 +1,5 @@
 import { LoginModel } from "../models/LoginModel"
+import { ProjectReqModel } from "../models/ProjectReqModel"
 import { RegisterModel } from "../models/RegisterModel"
 
 export default class ComputePayloadHelper {
@@ -19,6 +20,13 @@ export default class ComputePayloadHelper {
     return{
       username: username,
       password: password
+    }
+  }
+
+  public static projectPayload(title: String, description: String) : ProjectReqModel{
+    return{
+      title: title,
+      description: description
     }
   }
 }

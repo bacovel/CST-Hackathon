@@ -1,7 +1,7 @@
 <div class="min-h-screen flex items-center justify-center">
     <div class="bg-gray-800 p-8 rounded-md shadow-md w-[40rem]">
       <h1 class="text-2xl font-medium mb-6 text-center">Login</h1>
-      <form [formGroup]="formGroup">
+      <form [formGroup]="formGroup" (ngSubmit)="login()">
         <div class="mb-4">
           <label for="username" class="block font-medium mb-2">Username</label>
           <input formControlName="username" type="text" id="username" name="username" class="border-gray-400 border rounded-md w-full py-2 px-3 bg-gray-700 text-white" />

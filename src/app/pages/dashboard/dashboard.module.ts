@@ -13,6 +13,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
   imports: [
     CommonModule,
     DashboardRoutingModule
-  ]
+  ],
+  providers:[]
 })
 export class DashboardModule { }

@@ -19,4 +19,8 @@ export class AccountService {
   loginUser(body:LoginModel): Observable<any>{
     return this.apiService.post(`${this.url}/Auth`,body);
   }
+
+  getUser(): Observable<any>{
+    return this.apiService.get(`${this.url}/GetUser`);
+  }
 }

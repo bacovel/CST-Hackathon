@@ -12,6 +12,7 @@ import { ErrorPagesComponent } from './pages/error-pages/error-pages.component';
 import { HttpRequestsInterceptor } from './_core/interceptors/http-requests.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserService } from './_core/services/user.service';
 
 
 
@@ -33,6 +34,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ToastrModule.forRoot()
   ],
   providers: [
+    UserService,
     {
       provide: APP_INITIALIZER,
       multi: true,

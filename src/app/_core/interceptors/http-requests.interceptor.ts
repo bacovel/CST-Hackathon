@@ -14,7 +14,8 @@ export class HttpRequestsInterceptor implements HttpInterceptor {
   constructor(private storageHelper: StorageHelperService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    let newRequest = this.setHeaders(request)
+    return next.handle(newRequest);
   }
 
   setHeaders(request: HttpRequest<any>){

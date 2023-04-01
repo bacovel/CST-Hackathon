@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { Urls } from 'src/app/_core/constants/Urls';
-import { IsLoggedGuard } from 'src/app/_core/guard/is-logged.guard';
+
 
 const routes: Routes = [
   { 
@@ -11,10 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: Urls.PROFILE,
-        component: DashboardComponent,
-        canActivate: [
-          IsLoggedGuard
-        ]
+        component: DashboardComponent
       }
     ]
   }

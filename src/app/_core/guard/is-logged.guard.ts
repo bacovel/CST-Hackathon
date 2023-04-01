@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { UNAUTHORIZED } from '../constants/Errors';
-import * as Urls from '../constants/Urls';
 import { UserInfo } from '../models/UserInfo';
 import { UserService } from '../services/user.service';
 import { StorageHelperService } from '../services/storage-helper.service';
+import { AccountService } from '../api/account.service';
+import { Urls } from '../constants/Urls';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +16,30 @@ export class IsLoggedGuard {
 
   constructor(
     private userService: UserService,
-    private router: Router,
-    private storageHelper: StorageHelperService
+    private storageHelper: StorageHelperService,
+    private accountService: AccountService,
+    private router:Router,
   ){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    if(this.storageHelper.getToken() != null){
+    let token  = this.storageHelper.getToken();
+    if(token !== ""){
+      this.userService.currentUser$.subscribe({
+        next:(result:UserInfo) => {
+          if(result == null){
+            this.accountService.getUser().subscribe({
+              next:(result:any) => {
+                  this.userService.setCurrentUser({token:token,username:result.username});
+              }
+            })
+          }
+        }
+      })
       return true;
     }
-    
+    this.router.navigate([Urls.ERROR,Urls.ACCESS_DENIED]);
     return false;
   }
   

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Urls } from './_core/constants/Urls';
+import { IsLoggedGuard } from './_core/guard/is-logged.guard';
 
 
 const routes: Routes = [
@@ -17,7 +18,13 @@ const routes: Routes = [
     path: Urls.AUTH,
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) 
   },
-  { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) }
+  { 
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) ,
+    canActivate: [
+        IsLoggedGuard
+    ]
+  }
 ];
 
 @NgModule({

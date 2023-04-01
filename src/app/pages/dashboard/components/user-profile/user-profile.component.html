@@ -8,7 +8,7 @@
             <img src="https://media.istockphoto.com/id/1309328823/ro/fotografie/portret-headshot-al-angajatului-z%C3%A2mbitor-de-sex-masculin-%C3%AEn-birou.jpg?s=1024x1024&w=is&k=20&c=HmoQGrjuXk5ulF472m5FJ-YWMA4GBN3tIA4SEt9nxDw=" alt="Profile picture">
             <div class="info">
                 
-                <h2><i class="pi pi-user" style="font-size: 1em; margin-right: 0.5em;"></i>{{userName}}</h2>
+                <h2><i class="pi pi-user" style="font-size: 1em; margin-right: 0.5em;"></i>{{userName == null ? "" : userName}}</h2>
                 <h3><i class="pi pi-star" style="font-size: 1em; margin-right: 0.5em;"></i>Level: Small Mandarina (1)</h3>
                 <h3><i class="pi pi-chart-bar" style="font-size: 1em; margin-right: 0.5em;"></i>Points: 200 Mandarine</h3>
             </div>
@@ -17,9 +17,9 @@
     <div class="projects">
         <div class="project__field">
             <h1>Your projects</h1>
-
-            <app-project-card *ngFor="let project in projects" [project]="project"></app-project-card>
-           
+            <div *ngFor="let project of projects">
+                <app-project-card  [project]="project"></app-project-card>   
+            </div>
             <button (click)="showDialog()" icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
             <p-dialog header="Create a new adventure!" class="flex flex-direction-column" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
                 <div class="flex flex-col">

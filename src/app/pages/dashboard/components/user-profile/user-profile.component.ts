@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ProjectService } from 'src/app/_core/api/project.service';
 import { Urls } from 'src/app/_core/constants/Urls';
+import { ProjectModel } from 'src/app/_core/models/ProjectModel';
 import { userModel } from 'src/app/_core/models/UserModel';
 import { UserService } from 'src/app/_core/services/user.service';
 
@@ -15,10 +17,12 @@ export class UserProfileComponent implements OnInit{
   items: MenuItem[] = [];
   userName: String|undefined = "";
   visible: boolean | undefined;
+  projects : ProjectModel[] = [];
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private projectService: ProjectService
   ){}
 
   showDialog() {
@@ -28,7 +32,7 @@ export class UserProfileComponent implements OnInit{
   ngOnInit(): void {
     this.userService.currentUser$.subscribe({
       next:(user:userModel) => {
-        this.userName = user.username
+        this.userName = user?.username
       }
     })
     
@@ -39,5 +43,16 @@ export class UserProfileComponent implements OnInit{
         { label: 'Documentation', icon: 'pi pi-fw pi-file', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
         { label: 'Settings', icon: 'pi pi-fw pi-cog', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} }
     ];
+
+    this.projectService.getProjectByUser().subscribe({
+      next:(response:ProjectModel[])=>{
+       
+          this.projects = response;
+          console.log(this.projects)
+      },
+      error:()=>{
+
+      }
+    })
 }
 }

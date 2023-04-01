@@ -10,7 +10,7 @@ export class StorageHelperService {
   constructor(private cookieService : CookieService) { }
 
   saveToken(token: string) : void{
-    this.cookieService.set(this.tokenKey,token);
+    this.cookieService.set(this.tokenKey,token, 1);
   }
   deleteToken() : void {
     this.cookieService.delete(this.tokenKey);

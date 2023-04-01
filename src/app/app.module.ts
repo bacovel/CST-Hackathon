@@ -10,11 +10,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServerConfigService } from './_core/services/server-config.service';
 import { ErrorPagesComponent } from './pages/error-pages/error-pages.component';
 import { HttpRequestsInterceptor } from './_core/interceptors/http-requests.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPagesComponent,
+    DashboardComponent,
+    
     
   ],
   imports: [
@@ -23,7 +29,8 @@ import { HttpRequestsInterceptor } from './_core/interceptors/http-requests.inte
     CoreModule,
     SharedModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

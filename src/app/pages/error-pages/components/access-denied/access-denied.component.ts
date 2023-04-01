@@ -10,6 +10,7 @@ export class AccessDeniedComponent implements OnInit{
   constructor(  private userService: UserService){}
 
   ngOnInit(): void {
-  this.userService.getCurrentUser({username:"user",password:"password"}).subscribe();
+    //this.userService.loginUser({username:"user",password:"password"}).subscribe();
+    
   }
 }

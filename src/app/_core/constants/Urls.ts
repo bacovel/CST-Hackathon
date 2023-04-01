@@ -9,5 +9,6 @@ export enum Urls {
   LOGIN = 'login',
   REGISTER =  'register',
 
-  
+  DASH = 'dashboard',
+  PROFILE = 'user-profile',
 }

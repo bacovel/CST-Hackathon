@@ -6,6 +6,8 @@ import { AccountService } from '../api/account.service';
 import { Urls } from '../constants/Urls';
 import StorageHelper from '../helpers/StorageHelper';
 import { UserInfo } from '../models/UserInfo';
+import { StorageHelperService } from './storage-helper.service';
+import { LoginModel } from '../models/LoginModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,21 +19,22 @@ export class UserService {
 
   constructor(
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private storageHelper: StorageHelperService
   ) {
     //this.getCurrentUser().pipe(first()).subscribe();
    }
 
-  getCurrentUser(body:any): Observable<any> {
-    return this.accountService.getCurrentUser(body).pipe(
+  loginUser(body:LoginModel): Observable<any> {
+    return this.accountService.loginUser(body).pipe(
       tap((response: UserInfo) => {
         this.setCurrentUser(response);
-        StorageHelper.saveToken(response.token);
+        this.storageHelper.saveToken(response.token);
       }),
       catchError( (error: HttpErrorResponse) => {
         if(error.status != 401 && error.status != 403){
           this.setCurrentUser(null);
-          StorageHelper.deleteToken();
+          this.storageHelper.deleteToken();
         }
         else{
           let user: UserInfo = {

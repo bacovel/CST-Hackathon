@@ -11,8 +11,8 @@
           <input formControlName="password" type="password" id="password" name="password" class="border-gray-400 border rounded-md w-full py-2 px-3 bg-gray-700 text-white" />
         </div>
         <div class="flex flex-col">
-            <a class="align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 mb-2" href="#">
-                Nu ai un cont?
+            <a class="align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 mb-2" routerLink="/auth/register">
+                Don't have an account?
             </a>
             <button type="submit" [disabled]="!formGroup.valid" [ngClass]="{'disabled':!formGroup.valid,'hover:bg-blue-600':formGroup.valid}" class="bg-blue-500 text-white py-2 px-4 rounded-md  transition-colors duration-200">Login</button>
         </div>

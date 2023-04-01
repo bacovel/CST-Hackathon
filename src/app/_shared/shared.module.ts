@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
-
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { TableModule } from 'primeng/table';
+import { TreeTableModule } from 'primeng/treetable';
 
 
 @NgModule({
   declarations: [
-    ProjectCardComponent
+    ProjectCardComponent,
+    LeaderboardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TableModule,
+    TreeTableModule
   ],
   exports:[
-    ProjectCardComponent
+    ProjectCardComponent,
+    LeaderboardComponent
   ]
 })
 export class SharedModule { }

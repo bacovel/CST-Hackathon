@@ -15,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    
     UserProfileComponent
   ],
   imports: [
@@ -28,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputTextareaModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class DashboardModule { }

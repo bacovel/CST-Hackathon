@@ -18,6 +18,7 @@
 .profile{
     width: 80vw;
     padding: 5em;
+    gap: 5em;
 }
 
 .profile__card{
@@ -32,11 +33,23 @@
     align-items: center;
     gap: 2em;
 
+    .image{
+        position: relative;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+    }
+
     img{
-        height: 18em;
-        max-width: 18em;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 100%;
+        width: auto;
         border-radius: 50%;
-        object-fit: cover;
+        -webkit-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
     }
 }
 

@@ -17,8 +17,28 @@ export class UserProfileComponent implements OnInit{
 
   items: MenuItem[] = [];
   userName: String|undefined = "";
+  points: Number|undefined;
+  level: Number|undefined;
   visible: boolean | undefined;
   projects : ProjectModel[] = [];
+  users: userModel[] = [
+    {
+      id: 1,
+      username: 'Mandarin',
+      level: 1,
+      experience: 200,
+      needExperience: 500,
+      profileImage: ''
+    },
+    {
+      id: 2,
+      username: 'Raul',
+      level: 3,
+      experience: 1500,
+      needExperience: 500,
+      profileImage: ''
+    }
+];
   formGroup?: FormGroup;
   constructor(
     private router: Router,
@@ -33,9 +53,12 @@ export class UserProfileComponent implements OnInit{
   ngOnInit(): void {
     this.userService.currentUser$.subscribe({
       next:(user:userModel) => {
-        this.userName = user?.username
+        this.userName = user?.username,
+        this.points = user?.experience,
+        this.level = user?.experience
       }
     })
+    
     
     this.items = [
         { label: 'Home', icon: 'pi pi-fw pi-home', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
@@ -49,7 +72,7 @@ export class UserProfileComponent implements OnInit{
       next:(response:ProjectModel[])=>{
        
           this.projects = response;
-          console.log(this.projects)
+          
       },
       error:()=>{
 
@@ -60,5 +83,7 @@ export class UserProfileComponent implements OnInit{
       name: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required])
     });
+
+
 }
 }

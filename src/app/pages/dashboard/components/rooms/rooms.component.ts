@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AccountService } from 'src/app/_core/api/account.service';
 import { CompileService } from 'src/app/_core/api/compile.service';
 import { RoomService } from 'src/app/_core/api/room.service';
 import { Urls } from 'src/app/_core/constants/Urls';
@@ -29,7 +30,8 @@ export class RoomsComponent implements OnInit{
     private compileService: CompileService,
     private roomService: RoomService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private accountService: AccountService
     ){}
 
   ngOnInit(): void {
@@ -71,6 +73,15 @@ export class RoomsComponent implements OnInit{
   finishRoom(){
     this.roomService.closeRoom(this.id).subscribe({
       next:() =>{
+         let paylaod = ComputePayloadHelper.updateExpPayload(100);
+          this.accountService.updateExp(paylaod).subscribe({
+            next:()=>{
+              this.toastr.success(`You have received 100 points!`)
+            },
+            error:()=>{
+              this.toastr.error("you could not get points")
+            }
+          })
           this.router.navigate([Urls.DASH,Urls.PROFILE]);
       },
       error: (err:HttpErrorResponse) => {

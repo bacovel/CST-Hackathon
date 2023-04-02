@@ -16,6 +16,9 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { DropdownModule } from 'primeng/dropdown';
 import { OnlineComponent } from './components/online/online.component';
+import { AboutComponent } from './components/about/about.component';
+import { CardModule } from 'primeng/card';
+import { AvatarModule } from 'primeng/avatar';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { OnlineComponent } from './components/online/online.component';
     UserProfileComponent,
     ProjectComponent,
     RoomsComponent,
-    OnlineComponent      
+    OnlineComponent,
+    AboutComponent      
   ],
   imports: [
     CommonModule,
@@ -36,6 +40,8 @@ import { OnlineComponent } from './components/online/online.component';
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
+    CardModule,
+    AvatarModule,
     MonacoEditorModule.forRoot()
   ]
 })

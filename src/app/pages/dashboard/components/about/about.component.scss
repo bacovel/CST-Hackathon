@@ -1,0 +1,50 @@
+::ng-deep .p-tabmenu .p-tabmenu-nav {
+    background: #111827 !important;
+    border:none;
+    border-bottom: 1px solid whitesmoke;
+    border-width: 0 0 2px 0;
+}
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    background: #111827 !important;
+    color: whitesmoke;
+}
+
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    border-bottom: 2px solid whitesmoke;
+}
+
+::ng-deep .p-card{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1em;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #111827;
+}
+
+.content{
+    height: calc(100vh - 57px);
+    background-image: url('../../../../../assets/images/about_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.image{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.img{
+   position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+}

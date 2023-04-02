@@ -7,6 +7,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ProjectComponent } from './components/project/project.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { OnlineComponent } from './components/online/online.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { 
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: Urls.ONLINE,
         component: OnlineComponent
+      },
+      {
+        path: Urls.ABOUT,
+        component: AboutComponent
       }
     ]
   }

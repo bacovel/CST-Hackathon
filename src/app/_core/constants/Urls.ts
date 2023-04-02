@@ -13,5 +13,6 @@ export enum Urls {
   PROFILE = 'user-profile',
   PROJECT = "project/:id",
   ROOMS = "rooms/:id",
-  ONLINE = 'online'
+  ONLINE = 'online',
+  ABOUT = 'about'
 }

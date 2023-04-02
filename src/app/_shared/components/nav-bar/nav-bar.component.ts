@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
      this.items = [
         { label: 'Home', icon: 'pi pi-fw pi-home', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
         { label: 'Connect with firends', icon: 'pi pi-users', command: () => {this.router.navigate([Urls.DASH,Urls.ONLINE])} },
-        
+        { label: 'About Developers', icon: 'pi pi-users', command: () => {this.router.navigate([Urls.DASH,Urls.ABOUT])} },
     ];
   }
 }

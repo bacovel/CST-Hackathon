@@ -52,10 +52,17 @@
 
     .send{
         width: 100%;
-      position: absolute;
-      bottom: 2em;
-      
-      align-items: center;
+        align-items: center;
+        margin: 1em auto;
+    }
+
+    .dialog{
+        background-color: #080b12;
+        margin: 1em;
+        padding: 1em;
+        height: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
     }
 }
 

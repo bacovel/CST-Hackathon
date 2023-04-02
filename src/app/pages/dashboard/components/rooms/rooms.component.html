@@ -20,8 +20,8 @@
         </div>
         
     </div>
-    <div class="chat">
-        <div class="flex flex-col">
+    <div class="chat flex flex-col justify-between">
+       
             <h2>Chat with your frineds!</h2>
             <div class="dialog">
                 <app-message [users]="users"></app-message>
@@ -30,7 +30,7 @@
                 <input formControlName="message" placeholder="Throw a mandarin!" type="text" pInputText/>
                 <button icon="pi pi-send" type="submit" class="text-white bg-blue-950" pButton></button>
             </div>
-        </div>     
+        
     </div>
 </div>
 

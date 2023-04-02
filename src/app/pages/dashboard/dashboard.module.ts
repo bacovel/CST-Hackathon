@@ -12,13 +12,15 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectComponent } from './components/project/project.component';
-
+import { RoomsComponent } from './components/rooms/rooms.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 
 @NgModule({
   declarations: [
     
     UserProfileComponent,
-          ProjectComponent
+          ProjectComponent,
+          RoomsComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { ProjectComponent } from './components/project/project.component';
     InputTextareaModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MonacoEditorModule.forRoot()
   ]
 })
 export class DashboardModule { }

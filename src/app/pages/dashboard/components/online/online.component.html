@@ -1,0 +1,18 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="content flex jsutify-center">
+    <div class="generate flex flex-col">
+        <h2>Generate a room</h2>
+        <input placeholder="Room Name" type="text" pInputText />
+        <p-dropdown [options]="taskType!" [(ngModel)]="selectedType" optionLabel="name"></p-dropdown>
+        <button type="submit" class="text-white bg-blue-950 mt-9" pButton>Generate</button>
+    </div>
+    <h1>Or..</h1>
+    <div class="connect flex flex-col">
+        <h2>Connect to an existing room</h2>
+        <input placeholder="Room ID" type="text" pInputText />
+        <button type="submit" class="text-white bg-blue-950 mt-9" pButton>Connect</button>
+
+    </div>
+</div>
+>

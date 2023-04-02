@@ -5,20 +5,27 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { TableModule } from 'primeng/table';
 import { TreeTableModule } from 'primeng/treetable';
 
+import { CardModule } from 'primeng/card';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @NgModule({
   declarations: [
     ProjectCardComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,
+    CardModule,
     TableModule,
-    TreeTableModule
+    TreeTableModule,
+    TabMenuModule
   ],
   exports:[
     ProjectCardComponent,
-    LeaderboardComponent
-  ]
+    LeaderboardComponent,
+    NavBarComponent
+  ],
 })
 export class SharedModule { }

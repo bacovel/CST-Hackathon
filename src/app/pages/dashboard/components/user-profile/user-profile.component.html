@@ -1,7 +1,7 @@
 <app-nav-bar></app-nav-bar>
 <div class="content">
-    <div class="profile flex flex-row justify-center">
-        <div class="profile__card">
+    <div class="profile flex flex-row justify-center ">
+        <div class="profile__card slide-in-left">
             <div class="image" *ngIf="userDetails != null">
                 <img [src]="userDetails!.profileImage" alt="Profile picture">
             </div>
@@ -13,13 +13,13 @@
                 <h3><i class="pi pi-chart-bar" style="font-size: 1em; margin-right: 0.5em;"></i>Points: 200 Mandarine</h3>
             </div>
         </div>
-        <div class="w-full ">   
+        <div class="w-full scale-in-center">   
             <h2>Leaderboard</h2>
             <app-leaderboard [users]="users"></app-leaderboard>
         </div>
     </div>
     
-    <div class="projects">
+    <div class="projects scale-in-center">
         <div class="project__field">
             <h1>Your projects</h1>
             <div *ngFor="let project of projects" class="flex justify-center">

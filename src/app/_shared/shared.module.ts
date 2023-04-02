@@ -8,6 +8,7 @@ import { TreeTableModule } from 'primeng/treetable';
 import { CardModule } from 'primeng/card';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { MessageComponent } from './components/message/message.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
     ProjectCardComponent,
     LeaderboardComponent,
     NavBarComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
     ProjectCardComponent,
     LeaderboardComponent,
     NavBarComponent,
+    MessageComponent,
     TabMenuModule,
     TableModule
   ],

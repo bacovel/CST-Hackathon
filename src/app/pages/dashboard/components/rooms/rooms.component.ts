@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageModel } from 'src/app/_core/models/MessageModel';
 import { SignalrService } from 'src/app/_core/services/signalr.service';
 
 @Component({
@@ -12,6 +13,12 @@ export class RoomsComponent implements OnInit{
   id:string = '';
   editorOptions = {theme: 'vs-dark', language: 'javascript'};
   code: string= 'function x() {\nconsole.log("Hello world!");\n}';
+  users: MessageModel[] = [
+    {
+      author: "mandarin",
+      message: "sugi pula ca te fac"
+    }
+  ]
   
   constructor(
     private signalR : SignalrService,

@@ -3,7 +3,7 @@
     <div class="profile flex flex-row justify-center">
         <div class="profile__card">
             <div class="image">
-                <img src="https://media.istockphoto.com/id/1309328823/ro/fotografie/portret-headshot-al-angajatului-z%C3%A2mbitor-de-sex-masculin-%C3%AEn-birou.jpg?s=1024x1024&w=is&k=20&c=HmoQGrjuXk5ulF472m5FJ-YWMA4GBN3tIA4SEt9nxDw=" alt="Profile picture">
+                <img src="../../../../../assets/images/mandarin.png" alt="Profile picture">
             </div>
             
             <div class="info">
@@ -17,7 +17,7 @@
         <app-leaderboard [users]="users"></app-leaderboard>
 
     </div>
-    <button (click)="showDialog()" icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
+    
     <div class="projects">
         <div class="project__field">
             <h1>Your projects</h1>
@@ -32,6 +32,7 @@
                     <button (click)="createProject()" [disabled]="!formGroup?.valid" [ngClass]="{'disabled':!formGroup?.valid,'hover:bg-blue-600':formGroup?.valid}"  type="submit" class="text-white bg-blue-950 mt-9" pButton>Create</button>
                 </form>
             </p-dialog>
+            <button (click)="showDialog()" icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
         </div>
     </div>
 </div>

@@ -1,2 +1,35 @@
-<button (click)="sendMessage()">Send message</button>
-<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+<app-nav-bar></app-nav-bar>
+
+<div class="content">
+    <div class="coding flex flex-col">
+        <div class="challenge">
+            <h2>Challenge 01</h2>
+            <p>suma a 2 numere a si b, unde a = 4 si b = 6</p>
+        </div>
+        <button (click)="sendMessage()">Send message</button>
+        <div class="editor">
+            <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+            <div class="output">
+                <textarea placeholder="output:" rows="3" cols="30" [style.width]="'100%'" pInputTextarea [autoResize]="true"></textarea> 
+            </div>
+        </div>
+        
+        <div class="btns flex">
+            <button type="submit" class="text-white bg-blue-950" pButton>Compile</button>
+            <button type="submit" class="text-white bg-blue-950" pButton>Finish!</button>
+        </div>
+        
+    </div>
+    <div class="chat">
+        <div class="flex flex-col">
+            <h2>Chat with your frineds!</h2>
+            <div class="send flex justify-center">
+                <input formControlName="message" placeholder="Throw a mandarin!" type="text" pInputText/>
+                <button icon="pi pi-send" type="submit" class="text-white bg-blue-950" pButton></button>
+            </div>
+        </div>     
+    </div>
+</div>
+
+
+

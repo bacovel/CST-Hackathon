@@ -9,6 +9,10 @@
     color: whitesmoke;
 }
 
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    border-bottom: 2px solid whitesmoke;
+}
+
 .content{
     height: calc(100vh - 57px);
     background-image: url('../../../../../assets/images/b.png');
@@ -92,7 +96,5 @@
     }
 }
 
-::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
-    border-bottom: 2px solid whitesmoke;
-}
+
 

@@ -1,0 +1,64 @@
+
+
+::ng-deep .p-tabmenu .p-tabmenu-nav {
+    background: #111827 !important;
+    border:none;
+    border-bottom: 1px solid whitesmoke;
+    border-width: 0 0 2px 0;
+}
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    background: #111827 !important;
+    color: whitesmoke;
+}
+
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
+    border-bottom: 2px solid whitesmoke;
+}
+
+.content{
+    height: calc(100vh - 57px);
+    display: flex;
+    flex-direction: row;
+}
+
+.coding{
+    width: 75vw;
+    padding: 5em;
+
+    .btns{
+        justify-content: space-between;
+    }
+    
+}
+
+.chat{
+    width: 25vw;
+    position: relative;
+    border-left: 1px solid whitesmoke;
+    max-height: 100vh;
+    overflow: scroll;
+    
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    h2{
+        text-align: center;
+        margin: 2em;
+    }
+
+    .send{
+        width: 100%;
+      position: absolute;
+      bottom: 2em;
+      
+      align-items: center;
+    }
+}
+
+::ng-deep .p-inputtext{
+    height: 3em;
+}

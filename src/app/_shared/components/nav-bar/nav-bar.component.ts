@@ -15,10 +15,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
      this.items = [
         { label: 'Home', icon: 'pi pi-fw pi-home', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
-        { label: 'Calendar', icon: 'pi pi-fw pi-calendar', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
-        { label: 'Edit', icon: 'pi pi-fw pi-pencil', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
-        { label: 'Documentation', icon: 'pi pi-fw pi-file', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} },
-        { label: 'Settings', icon: 'pi pi-fw pi-cog', command: () => {this.router.navigate([Urls.DASH,Urls.PROFILE])} }
+        { label: 'Connect with firends', icon: 'pi pi-users', command: () => {this.router.navigate([Urls.DASH,Urls.ONLINE])} },
+        
     ];
   }
 }

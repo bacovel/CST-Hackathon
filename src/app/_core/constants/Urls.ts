@@ -12,5 +12,6 @@ export enum Urls {
   DASH = 'dashboard',
   PROFILE = 'user-profile',
   PROJECT = "project/:id",
-  ROOMS = "rooms/:id"
+  ROOMS = "rooms/:id",
+  ONLINE = 'online'
 }

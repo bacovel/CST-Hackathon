@@ -9,11 +9,13 @@ import { CardModule } from 'primeng/card';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 
+
 @NgModule({
   declarations: [
     ProjectCardComponent,
     LeaderboardComponent,
-    NavBarComponent
+    NavBarComponent,
+    LeaderboardComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,10 @@ import { TabMenuModule } from 'primeng/tabmenu';
   exports:[
     ProjectCardComponent,
     LeaderboardComponent,
-    NavBarComponent
+    NavBarComponent,
+    TabMenuModule,
+    TableModule
   ],
+ 
 })
 export class SharedModule { }

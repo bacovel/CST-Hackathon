@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
-import { TabMenuModule } from 'primeng/tabmenu';
+
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
@@ -15,17 +15,19 @@ import { ProjectComponent } from './components/project/project.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { DropdownModule } from 'primeng/dropdown';
+import { OnlineComponent } from './components/online/online.component';
+
 
 @NgModule({
   declarations: [ 
     UserProfileComponent,
     ProjectComponent,
-    RoomsComponent
+    RoomsComponent,
+    OnlineComponent      
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    TabMenuModule,
     ButtonModule,
     DialogModule,
     InputTextModule,

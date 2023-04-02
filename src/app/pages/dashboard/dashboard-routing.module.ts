@@ -6,6 +6,7 @@ import { IsLoggedGuard } from 'src/app/_core/guard/is-logged.guard';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ProjectComponent } from './components/project/project.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { OnlineComponent } from './components/online/online.component';
 
 const routes: Routes = [
   { 
@@ -26,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: Urls.ONLINE,
-        component: RoomsComponent
+        component: OnlineComponent
       }
     ]
   }

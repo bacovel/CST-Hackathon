@@ -2,8 +2,8 @@
 <div class="content">
     <div class="profile flex flex-row justify-center">
         <div class="profile__card">
-            <div class="image">
-                <img src="../../../../../assets/images/mandarin.png" alt="Profile picture">
+            <div class="image" *ngIf="userDetails != null">
+                <img [src]="userDetails!.profileImage" alt="Profile picture">
             </div>
             
             <div class="info">
@@ -14,10 +14,9 @@
             </div>
         </div>
         <div class="w-full ">   
+            <h2>Leaderboard</h2>
             <app-leaderboard [users]="users"></app-leaderboard>
         </div>
-        
-
     </div>
     
     <div class="projects">

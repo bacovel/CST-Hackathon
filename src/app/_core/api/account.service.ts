@@ -23,4 +23,15 @@ export class AccountService {
   getUser(): Observable<any>{
     return this.apiService.get(`${this.url}/GetUser`);
   }
+  getDetails(): Observable<any>{
+    return this.apiService.get(`${this.url}/GetUserDetails`);
+  }
+
+  getLeaderBoard(): Observable<any>{
+    return this.apiService.get(`${this.url}/GetLeaderBoard`);
+  }
+
+  updateExp(body:any){
+    return this.apiService.post(`${this.url}/UpdateExp`,body); 
+  }
 }

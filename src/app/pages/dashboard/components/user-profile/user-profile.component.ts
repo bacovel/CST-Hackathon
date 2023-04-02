@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MenuItem } from 'primeng/api';
+import { AccountService } from 'src/app/_core/api/account.service';
 import { ProjectService } from 'src/app/_core/api/project.service';
 import { Urls } from 'src/app/_core/constants/Urls';
 import ComputePayloadHelper from 'src/app/_core/helpers/ComputePayloadHelper';
@@ -23,30 +24,15 @@ export class UserProfileComponent implements OnInit{
   level: Number|undefined;
   visible: boolean | undefined;
   projects : ProjectModel[] = [];
-  users: userModel[] = [
-    {
-      id: 1,
-      username: 'Mandarin',
-      level: 1,
-      experience: 200,
-      needExperience: 500,
-      profileImage: ''
-    },
-    {
-      id: 2,
-      username: 'Raul',
-      level: 3,
-      experience: 1500,
-      needExperience: 500,
-      profileImage: ''
-    }
-];
+  users: userModel[] = [];
   formGroup?: FormGroup;
+  userDetails!: userModel;
   constructor(
     private router: Router,
     private userService: UserService,
     private projectService: ProjectService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private accountService : AccountService
   ){}
 
   showDialog() {
@@ -61,9 +47,13 @@ export class UserProfileComponent implements OnInit{
         this.level = user?.experience
       }
     })
-    
-   
 
+    this.accountService.getDetails().subscribe({
+      next:(res:userModel) => {
+        this.userDetails = res;
+        console.log(this.userDetails)
+      }
+    })
     this.projectService.getProjectByUser().subscribe({
       next:(response:ProjectModel[])=>{
        
@@ -72,6 +62,15 @@ export class UserProfileComponent implements OnInit{
       },
       error:()=>{
 
+      }
+    })
+
+    this.accountService.getLeaderBoard().subscribe({
+      next:(response:userModel[])=>{
+        this.users = response;
+      },
+      error:()=>{
+        this.toastr.error("Leaderboard cannot be load")
       }
     })
 
@@ -95,7 +94,6 @@ export class UserProfileComponent implements OnInit{
       }
     })
   }
-
   get projectModalName() {
     return this.formGroup?.get("name")?.value;
   }

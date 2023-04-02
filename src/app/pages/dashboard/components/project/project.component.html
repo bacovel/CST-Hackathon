@@ -1,57 +1,35 @@
 <app-nav-bar></app-nav-bar>
 <div class="container mx-auto px-4 py-8">
-    <h1 class="text-2xl font-bold mb-4">My Project</h1>
+    <h1 class="text-2xl font-bold mb-4">{{project!.name}}</h1>
 
     <!-- Task List -->
     <div class="bg-gray-800 p-4 rounded-md">
       <h2 class="text-lg font-bold mb-2">Task List</h2>
 
       <!-- Task Item -->
-      <div class="flex items-center mb-4">
+      <div class="flex items-center mb-4" *ngFor="let task of tasks">
         <input
           type="checkbox"
           id="task-1"
           class="mr-2 form-checkbox h-4 w-4 text-purple-600"
         />
         <label for="task-1" class="font-medium text-gray-100">
-          Complete task 1
+            {{task.name}}
         </label>
-      </div>
 
-      <!-- Task Item -->
-      <div class="flex items-center mb-4">
-        <input
-          type="checkbox"
-          id="task-2"
-          class="mr-2 form-checkbox h-4 w-4 text-purple-600"
-        />
-        <label for="task-2" class="font-medium text-gray-100">
-          Complete task 2
-        </label>
+        <div class="flex justify-end ml-2">
+            <button icon="pi pi-minus" pButton class="btnminus"></button>
+        </div>
+        
       </div>
-
-      <!-- Task Item -->
-      <div class="flex items-center mb-4">
-        <input
-          type="checkbox"
-          id="task-3"
-          class="mr-2 form-checkbox h-4 w-4 text-purple-600"
-        />
-        <label for="task-3" class="font-medium text-gray-100">
-          Complete task 3
-        </label>
-      </div>
-
-      <!-- Task Item -->
-      <div class="flex items-center mb-4">
-        <input
-          type="checkbox"
-          id="task-4"
-          class="mr-2 form-checkbox h-4 w-4 text-purple-600"
-        />
-        <label for="task-4" class="font-medium text-gray-100">
-          Complete task 4
-        </label>
-      </div>
+      <button (click)="visible = true"  icon="pi pi-plus" class="btn text-white bg-blue-950" pButton></button>
     </div>
   </div>
+<p-dialog header="Create a new adventure!" class="flex flex-direction-column" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <form class="flex flex-col" [formGroup]="formGroup!" >
+        <input formControlName="name" placeholder="Task name" type="text" pInputText/>
+        <textarea formControlName="description" placeholder="What is this task about" rows="5" cols="30" pInputTextarea></textarea>
+        <button (click)="createTask()"  [disabled]="!formGroup?.valid" [ngClass]="{'disabled':!formGroup?.valid,'hover:bg-blue-600':formGroup?.valid}"  type="submit" class="text-white bg-blue-950 mt-9" pButton>Create</button>
+    </form>
+</p-dialog>
+  <app-timer></app-timer>

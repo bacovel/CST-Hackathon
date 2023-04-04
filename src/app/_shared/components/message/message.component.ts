@@ -11,4 +11,5 @@ export class MessageComponent {
   @Input() users: MessageModel[] = [];
 
   constructor(){}
+  
 }

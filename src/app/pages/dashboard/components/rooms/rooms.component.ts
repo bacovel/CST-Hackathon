@@ -42,6 +42,7 @@ export class RoomsComponent implements OnInit{
     this.signalR.startConnection("https://localhost:44314/hub/RoomHub");
     this.signalR.getMessage().subscribe({
       next:(response:MessageModel) =>{
+        
         this.messages.push(response)
       },
       error:(error:any)=>{
